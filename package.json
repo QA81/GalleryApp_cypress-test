@@ -1,14 +1,17 @@
 {
-  "name": "allgalleriescreategallery",
+  "name": "galleryappcypresstest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    " e2e": ".\\node_modules\\.bin\\cypress open"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.7.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
   }
 }
