@@ -16,7 +16,7 @@ class AllGalleriesPage {
   }
 
   get anyGallery() {
-    return cy.get(".grid")
+    return cy.get(".grid").find("h2");
   }
 
   allGalleriesSearch(search) {

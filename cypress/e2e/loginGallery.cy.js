@@ -10,8 +10,11 @@ describe("Login test Gallery app", () => {
 
   it("Validate login with valid credentials", () => {
     loginPage.login("zeka@gmail.com", "123456789");
-    cy.url().should("not.include","/login")
+    cy.intercept("GET", "/**").as("logedUser");
+    cy.wait("@logedUser").then((interception) => {
+      expect(interception.response.statusCode).eq(200);
+      expect(interception.response.headers).to.exist;
+    });
+    cy.url().should("not.include", "/login");
   });
-
-
 });
