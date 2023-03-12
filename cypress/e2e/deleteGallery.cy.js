@@ -15,12 +15,11 @@ describe("delete my gallery test", () => {
     cy.wait("@login").then((interception) => {
       expect(interception.response.statusCode).eq(200);
       expect(interception.response.headers).to.exist;
-      cy.intercept("DELETE","/**").as("deleted")
+      cy.intercept("DELETE", "/**").as("deleted");
       deleteMyGalleryPage.deleteGallery();
-      cy.wait("@deleted").then((interception)=>{
-        expect(interception.response.statusCode).eq(200)
-      })
-
+      cy.wait("@deleted").then((interception) => {
+        expect(interception.response.statusCode).eq(200);
+      });
     });
   });
 });
