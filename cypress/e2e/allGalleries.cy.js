@@ -8,8 +8,10 @@ describe("Validate funcionality of All Galleries page", () => {
     loginPage.loginLink.click();
     cy.url().should("include", "/login");
     loginPage.login("zeka@gmail.com", "123456789");
-    cy.intercept("POST", "**/login").as("login");
-    cy.wait("@login")
+    cy.intercept("GET", "/**").as("login");
+    cy.wait("@login").then((interception)=>{
+        expect(interception.response.codeStatus).eq(200)
+    })
     allGalleriesPage.allGalleriesLink.click();
   });
 
