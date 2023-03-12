@@ -9,9 +9,9 @@ describe("Login test Gallery app", () => {
   });
 
   it("Validate login with valid credentials", () => {
+    cy.intercept("POST", "/**").as("login");
     loginPage.login("zeka@gmail.com", "123456789");
-    cy.intercept("GET", "/**").as("logedUser");
-    cy.wait("@logedUser").then((interception) => {
+    cy.wait("@login").then((interception) => {
       expect(interception.response.statusCode).eq(200);
       expect(interception.response.headers).to.exist;
     });

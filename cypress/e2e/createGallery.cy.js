@@ -6,8 +6,8 @@ describe("Create gallery test", () => {
   before("Visit app,login,click on create gallery", () => {
     cy.visit("/");
     loginPage.loginLink.click();
+    cy.intercept("POST", "/**").as("login");
     loginPage.login("zeka@gmail.com", "123456789");
-    cy.intercept("GET", "/**").as("login");
     cy.wait("@login").then((interception) => {
       expect(interception.response.statusCode).eq(200);
     });

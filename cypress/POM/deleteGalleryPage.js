@@ -12,9 +12,9 @@ class DeleteMyGalleryPage {
   }
 
   deleteGallery() {
-    this.myGalleryBtn.click();
+    this.myGalleryBtn.click()
     this.anyGallery.first().click();
-    this.deleteGalleryBtn.click();
+    this.deleteGalleryBtn.first().click();
   }
 }
 

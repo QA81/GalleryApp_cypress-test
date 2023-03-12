@@ -7,11 +7,13 @@ describe("Validate funcionality of All Galleries page", () => {
     cy.visit("/");
     loginPage.loginLink.click();
     cy.url().should("include", "/login");
+    cy.intercept("POST", "/**").as("login");
     loginPage.login("zeka@gmail.com", "123456789");
-    cy.intercept("GET", "/**").as("login");
-    cy.wait("@login").then((interception)=>{
-        expect(interception.response.codeStatus).eq(200)
-    })
+
+    cy.wait("@login").then((interception) => {
+      expect(interception.response.statusCode).eq(200);
+    });
+
     allGalleriesPage.allGalleriesLink.click();
   });
 
