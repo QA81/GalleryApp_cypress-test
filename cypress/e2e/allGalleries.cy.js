@@ -9,6 +9,7 @@ describe("Validate funcionality of All Galleries page", () => {
     cy.url().should("include", "/login");
     loginPage.login("zeka@gmail.com", "123456789");
     cy.intercept("POST", "**/login").as("login");
+    cy.wait("@login")
     allGalleriesPage.allGalleriesLink.click();
   });
 

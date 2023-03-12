@@ -11,7 +11,6 @@ describe("Create gallery test", () => {
     cy.wait("@login").then((interception) => {
       expect(interception.response.statusCode).eq(200);
     });
-
     createGalleryPage.createGalleryBtn.click();
     cy.url().should("include", "/create");
   });
