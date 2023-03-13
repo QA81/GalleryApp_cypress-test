@@ -19,6 +19,14 @@ class AllGalleriesPage {
     return cy.get(".grid").find("h2");
   }
 
+  get commentInput(){
+    return cy.get("textarea")
+  }
+
+  get submitCommentButton(){
+    return cy.get("button").eq(-1)
+  }
+
   allGalleriesSearch(search) {
     this.inputSearch.type(search);
     this.filterButton.click();

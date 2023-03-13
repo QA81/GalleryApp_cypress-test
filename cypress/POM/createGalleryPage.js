@@ -19,6 +19,10 @@ class CreateGalleryPage {
     return cy.get("button").eq(2);
   }
 
+  get secondImageInput() {
+    return cy.get("input").eq(-1)
+  }
+
   get submitBtn() {
     return cy.get(":submit").eq(0);
   }
@@ -31,7 +35,7 @@ class CreateGalleryPage {
     this.titleInput.type(title);
     this.descriptionsInput.type(description);
     this.imagesInput.type(imgUrl);
-    this.submitBtn.click();
+    
   }
 }
 export const createGalleryPage = new CreateGalleryPage();

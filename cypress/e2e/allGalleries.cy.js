@@ -4,21 +4,21 @@ import { loginPage } from "../POM/loginPage";
 
 describe("Validate funcionality of All Galleries page", () => {
   beforeEach("Visit gallery as logedin user and click on all galleries", () => {
+    cy.intercept("POST", "/**").as("login");
     cy.visit("/");
     loginPage.loginLink.click();
     cy.url().should("include", "/login");
-    cy.intercept("POST", "/**").as("login");
     loginPage.login("zeka@gmail.com", "123456789");
-
     cy.wait("@login").then((interception) => {
       expect(interception.response.statusCode).eq(200);
     });
-
     allGalleriesPage.allGalleriesLink.click();
   });
 
-  it("Validate any gallery is loading", () => {
+  it("Validate any gallery is loading and add comment", () => {
     allGalleriesPage.anyGallery.first().click();
+    allGalleriesPage.commentInput.type("punk is not dead");
+    allGalleriesPage.submitCommentButton.click();
   });
 
   it("validate pagination", () => {
