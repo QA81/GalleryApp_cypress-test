@@ -1,9 +1,15 @@
 class AllGalleriesPage {
+ 
   get allGalleriesLink() {
     return cy.get(".nav-link").eq(0);
   }
 
-  get inputSearch() {
+  get allGalleriesHeading(){
+    return cy.get("h1")
+  }
+
+
+  get searchInput() {
     return cy.get("input");
   }
 
@@ -15,20 +21,48 @@ class AllGalleriesPage {
     return cy.get("button").eq(1);
   }
 
-  get anyGallery() {
-    return cy.get(".grid").find("h2");
+  get allGalleries() {
+    return cy.get(".grid");
   }
 
-  get commentInput(){
-    return cy.get("textarea")
+  get singleGallery() {
+    return cy.get(".cell").first();
   }
 
-  get submitCommentButton(){
-    return cy.get("button").eq(-1)
+  get singleGalleryHeading() {
+    return cy.get("h2");
+  }
+
+  get loadedSingleGalleryHeading() {
+    return cy.get("h1")
+  }
+
+  get singleGalleryImg() {
+    return cy.get("img")
+  }
+
+  get galleryAuth() {
+    return cy.get("p");
+  }
+
+  get galleryDate() {
+    return cy.get("small");
+  }
+
+  get commentInput() {
+    return cy.get("textarea");
+  }
+
+  get submitCommentButton() {
+    return cy.get("button").eq(-1);
+  }
+
+  get comment(){
+    return cy.get(".comments-section")
   }
 
   allGalleriesSearch(search) {
-    this.inputSearch.type(search);
+    this.searchInput.type(search);
     this.filterButton.click();
   }
 }

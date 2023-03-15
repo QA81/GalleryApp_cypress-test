@@ -1,4 +1,9 @@
 class CreateGalleryPage {
+
+  get createGalleryHeading() {
+    return cy.get("h1");
+  }
+  
   get createGalleryBtn() {
     return cy.get(".nav-link").eq(2);
   }

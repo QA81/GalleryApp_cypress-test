@@ -12,6 +12,9 @@ describe("Create gallery test", () => {
       expect(interception.response.statusCode).eq(200);
     });
     createGalleryPage.createGalleryBtn.click();
+    createGalleryPage.createGalleryHeading
+      .should("be.visible")
+      .and("have.text", "Create Gallery");
     cy.url().should("include", "/create");
   });
 
