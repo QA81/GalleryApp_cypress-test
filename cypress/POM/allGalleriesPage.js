@@ -1,13 +1,11 @@
 class AllGalleriesPage {
- 
   get allGalleriesLink() {
     return cy.get(".nav-link").eq(0);
   }
 
-  get allGalleriesHeading(){
-    return cy.get("h1")
+  get allGalleriesHeading() {
+    return cy.get("h1");
   }
-
 
   get searchInput() {
     return cy.get("input");
@@ -34,11 +32,11 @@ class AllGalleriesPage {
   }
 
   get loadedSingleGalleryHeading() {
-    return cy.get("h1")
+    return cy.get("h1");
   }
 
   get singleGalleryImg() {
-    return cy.get("img")
+    return cy.get("img");
   }
 
   get galleryAuth() {
@@ -57,8 +55,24 @@ class AllGalleriesPage {
     return cy.get("button").eq(-1);
   }
 
-  get comment(){
+  get commentsWrapper() {
     return cy.get(".comments-section")
+  }
+
+  get commentsText(){
+    return this.commentsWrapper.find("li").last()
+  }
+
+  get authorOfComment(){
+    return this.commentsWrapper.find("p").last()
+  }
+
+  get commentsDeleteButton(){
+    return this.commentsWrapper.find("i").last()
+  }
+
+  get commentCreationDate(){
+    return this.commentsWrapper.find("small").last()
   }
 
   allGalleriesSearch(search) {

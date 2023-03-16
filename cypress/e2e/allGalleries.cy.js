@@ -65,15 +65,22 @@ describe("Validate funcionality of All Galleries page", () => {
     allGalleriesPage.singleGalleryImg.should("exist").and("be.visible");
   });
 
-  it("validate add comment functionality", () => {
+  it.only("validate add comment functionality", () => {
     const comment = "lagani rad";
     allGalleriesPage.singleGalleryHeading.first().click();
     cy.url().should("include", "/galleries/");
     allGalleriesPage.commentInput.type(comment);
     allGalleriesPage.submitCommentButton.click();
-    allGalleriesPage.comment.find("h5").should("have.text", "Comments: ");
-    allGalleriesPage.comment.find("p").first().should("have.text",comment)
-    allGalleriesPage.comment.find("i").first().click()
-    allGalleriesPage.comment.find("p").should("not.exist")
+    allGalleriesPage.commentsText
+      .find("p")
+      .first()
+      .should("have.text", comment)
+      .and("be.visible");
+    allGalleriesPage.authorOfComment
+      .should("contain", "Commented by:")
+      .and("be.visible");
+      allGalleriesPage.commentCreationDate.should("exist").and("be.visible")
+    allGalleriesPage.commentsDeleteButton.click();
+    allGalleriesPage.commentsText.should("not.have.text", comment);
   });
 });
